@@ -3,44 +3,6 @@ local lspconfig = require('lspconfig')
 
 lsp.preset('recommended')
 
-require('mason').setup({})
-require('mason-lspconfig').setup({
-    ensure_installed = {
-    -- ansible
-    'ansiblels',
-    -- bash
-    'bashls',
-    -- C#
-    'omnisharp',
-    -- docker
-    'docker_compose_language_service',
-    -- JSON
-    'jsonls',
-    -- latex
-    'ltex',
-    'texlab',
-    -- lua
-    'lua_ls',
-    -- markdown
-    -- 'markdownlint',
-    -- python
-    'jedi_language_server',
-    'pyright',
-    'pyre',
-    -- ruby
-    -- 'ruby_ls',
-    -- SQL
-    'sqlls',
-    -- YAML
-    'yamlls',
-    },
-    handlers = {
-        lsp.default_setup,
-    },
-})
-
-
-
 lsp.setup_servers({'dartls', force = true})
 
 -- Settings for LSPs
@@ -51,6 +13,10 @@ lspconfig.ltex.setup({
         },
     },
 })
+lspconfig.clangd.setup{}
+lspconfig.nixd.setup{}
+lspconfig.bashls.setup{}
+lspconfig.jedi_language_server.setup{}
 
 -- cmp setup
 local cmp = require('cmp')
