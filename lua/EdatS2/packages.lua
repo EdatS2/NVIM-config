@@ -100,6 +100,12 @@ local plugins = {
     {
         'lervag/vimtex'
     },
+    {
+        'GCBallesteros/NotebookNavigator.nvim'
+    },
+    {
+        'Vigemus/iron.nvim'
+    },
 }
 
 local opts = {}
