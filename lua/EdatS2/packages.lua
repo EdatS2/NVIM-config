@@ -72,6 +72,9 @@ local plugins = {
         {'hrsh7th/nvim-cmp'},
         -- Help with Vimtex completions
         {'hrsh7th/cmp-omni'},
+        {'SirVer/ultisnips'},
+        {'quangnguyen30192/cmp-nvim-ultisnips'},
+        {'honza/vim-snippets'},
 
         {
             'huggingface/llm.nvim',
@@ -99,6 +102,12 @@ local plugins = {
     },
     {
         'lervag/vimtex'
+    },
+    {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function() vim.fn["mkdp#util#install"]() end,
     },
     {
         'GCBallesteros/jupytext.nvim',

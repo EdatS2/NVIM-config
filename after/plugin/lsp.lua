@@ -17,6 +17,10 @@ lspconfig.clangd.setup{}
 lspconfig.nixd.setup{}
 lspconfig.bashls.setup{}
 lspconfig.jedi_language_server.setup{}
+lspconfig.ansiblels.setup{}
+lspconfig.docker_compose_language_service.setup{}
+lspconfig.lua_ls.setup{}
+lspconfig.texlab.setup{}
 
 -- cmp setup
 local cmp = require('cmp')
@@ -51,6 +55,10 @@ lsp.on_attach(function(client, bufnr)
 
     vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end, opts)
     vim.keymap.set('n', '<A-Enter>', function() vim.lsp.buf.code_action() end, opts)
+    vim.keymap.set('n', '<leader>ln', vim.diagnostic.goto_next)
+    vim.keymap.set('n', '<leader>lp', vim.diagnostic.goto_prev)
+    vim.keymap.set('n', '<leader>lo', vim.diagnostic.setloclist)
+    vim.keymap.set('n', '<leader>le', vim.diagnostic.open_float)
 end)
 
 lsp.setup()
