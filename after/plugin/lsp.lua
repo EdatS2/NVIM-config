@@ -1,5 +1,6 @@
 local lsp = require('lsp-zero')
 local lspconfig = require('lspconfig')
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 lsp.preset('recommended')
 
@@ -13,14 +14,14 @@ lspconfig.ltex.setup({
         },
     },
 })
-lspconfig.clangd.setup{}
-lspconfig.nixd.setup{}
-lspconfig.bashls.setup{}
-lspconfig.jedi_language_server.setup{}
-lspconfig.ansiblels.setup{}
-lspconfig.docker_compose_language_service.setup{}
-lspconfig.lua_ls.setup{}
-lspconfig.texlab.setup{}
+lspconfig.clangd.setup{capabilties=capabilities}
+lspconfig.nixd.setup{capabilties=capabilities}
+lspconfig.bashls.setup{capabilties=capabilities}
+lspconfig.jedi_language_server.setup{capabilties=capabilities}
+lspconfig.ansiblels.setup{capabilties=capabilities}
+lspconfig.docker_compose_language_service.setup{capabilties=capabilities}
+lspconfig.lua_ls.setup{capabilties=capabilities}
+lspconfig.texlab.setup{capabilties=capabilities}
 
 -- cmp setup
 local cmp = require('cmp')

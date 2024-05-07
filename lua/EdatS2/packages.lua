@@ -67,14 +67,16 @@ local plugins = {
         {'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
         {'neovim/nvim-lspconfig'},
         {'L3MON4D3/LuaSnip'},        
+        {'saadparwaiz1/cmp_luasnip'},
         {'hrsh7th/cmp-path'},
         {'hrsh7th/cmp-nvim-lsp'},
         {'hrsh7th/nvim-cmp'},
         -- Help with Vimtex completions
         {'hrsh7th/cmp-omni'},
-        {'SirVer/ultisnips'},
-        {'quangnguyen30192/cmp-nvim-ultisnips'},
-        {'honza/vim-snippets'},
+        -- {'SirVer/ultisnips'},
+        -- {'quangnguyen30192/cmp-nvim-ultisnips'},
+        -- {'honza/vim-snippets'},
+
 
         {
             'huggingface/llm.nvim',
@@ -102,12 +104,6 @@ local plugins = {
     },
     {
         'lervag/vimtex'
-    },
-    {
-    "iamcco/markdown-preview.nvim",
-    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-    ft = { "markdown" },
-    build = function() vim.fn["mkdp#util#install"]() end,
     },
     {
         'GCBallesteros/jupytext.nvim',
