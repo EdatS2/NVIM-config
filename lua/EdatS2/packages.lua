@@ -81,7 +81,6 @@ local plugins = {
         {
             'huggingface/llm.nvim',
         },
-        
     },
     {
         "folke/which-key.nvim",

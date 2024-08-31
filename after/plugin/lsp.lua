@@ -36,19 +36,24 @@ cmp.setup({
     }),
     mapping = cmp.mapping.preset.insert({
         -- Confirm completion
-        ['<Tab>'] = cmp.mapping.confirm({select = true}),
+--        ['<Tab>'] = cmp.mapping.confirm({select = true}),
 
         -- Trigger completion menu
         ['<A-Enter>'] = cmp.mapping.complete(),
 
         -- Navigate between snippet placeholders
-        ['<C-f>'] = cmp_action.luasnip_jump_forward(),
-        ['<C-b>'] = cmp_action.luasnip_jump_backward(),
+        ['<C-f>'] = cmp.mapping(cmp_action.luasnip_jump_forward(), {"i","s"}),
+        ['<C-b>'] = cmp.mapping(cmp_action.luasnip_jump_backward(), {"i","s"}),
 
         -- Scroll through completions
         ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
         ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-    })
+    }),
+    snippet = {
+        expand = function(args)
+        require('luasnip').lsp_expand(args.body)
+    end,
+},
 })
 
 lsp.on_attach(function(client, bufnr)
