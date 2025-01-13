@@ -35,6 +35,7 @@ cmp.setup({
         { name = 'omni', priority = 1250 },
         { name = 'nvim_lsp', priority = 750 },
         { name = 'luasnip', priority = 500 },
+        { name = 'codecompanion', priority = 950 },
     }),
     mapping = cmp.mapping.preset.insert({
         -- Confirm completion

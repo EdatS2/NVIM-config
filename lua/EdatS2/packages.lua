@@ -26,7 +26,7 @@ local plugins = {
         name = "gruvbox-baby",
         -- "rose-pine/neovim",
         -- name = "rose-pine",
-        lazy = false, -- make sure we load this during startup if it is your main colorscheme
+        lazy = false,    -- make sure we load this during startup if it is your main colorscheme
         priority = 1000, -- make sure to load this before all the other start plugins
     },
     {
@@ -142,6 +142,16 @@ local plugins = {
             local opts = { highlighters = { cells = nn.minihipatterns_spec } }
             return opts
         end,
+    },
+    {
+        "olimorris/codecompanion.nvim",
+        config = function()
+            require("codecompanion").setup()
+        end,
+        requires = {
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+        }
     },
 }
 
