@@ -22,6 +22,8 @@ lspconfig.ansiblels.setup{capabilties=capabilities}
 lspconfig.docker_compose_language_service.setup{capabilties=capabilities}
 lspconfig.lua_ls.setup{capabilties=capabilities}
 lspconfig.texlab.setup{capabilties=capabilities}
+lspconfig.zls.setup{capabilities=capabilities}
+lspconfig.marksman.setup{capabilities=capabilities}
 
 -- cmp setup
 local cmp = require('cmp')
