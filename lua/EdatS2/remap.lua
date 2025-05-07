@@ -28,3 +28,10 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 vim.keymap.set('n', '<leader>d', "\"_d")
 vim.keymap.set('v', '<leader>d', "\"_d")
 
+-- iron repl remaps
+vim.keymap.set('n', '<space>rs', '<cmd>IronRepl<cr>')
+vim.keymap.set('n', '<space>rr', '<cmd>IronRestart<cr>')
+vim.keymap.set('n', '<space>rf', '<cmd>IronFocus<cr>')
+vim.keymap.set('n', '<space>rh', '<cmd>IronHide<cr>')
+
+
