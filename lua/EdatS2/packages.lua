@@ -43,6 +43,10 @@ local plugins = {
         'mbbill/undotree',
     },
     {
+        "julianolf/nvim-dap-lldb",
+        dependencies = { "mfussenegger/nvim-dap" },
+    },
+    {
         -- tmux plugins
         'christoomey/vim-tmux-navigator',
         cmd = {
@@ -66,7 +70,6 @@ local plugins = {
     {
         { 'williamboman/mason.nvim' },
         { 'williamboman/mason-lspconfig.nvim' },
-
         { 'VonHeikemen/lsp-zero.nvim',        branch = 'v3.x' },
         { 'neovim/nvim-lspconfig' },
         { 'L3MON4D3/LuaSnip' },
@@ -79,11 +82,6 @@ local plugins = {
         -- {'SirVer/ultisnips'},
         -- {'quangnguyen30192/cmp-nvim-ultisnips'},
         -- {'honza/vim-snippets'},
-
-
-        {
-            'huggingface/llm.nvim',
-        },
     },
     {
         "folke/which-key.nvim",
@@ -99,59 +97,7 @@ local plugins = {
         lazy = false,
     },
     {
-        'scalameta/nvim-metals',
-        dependencies = {
-            'nvim-lua/plenary.nvim'
-        }
-    },
-    {
         'lervag/vimtex'
-    },
-    {
-        'GCBallesteros/jupytext.nvim',
-        config = true,
-    },
-    {
-        "GCBallesteros/NotebookNavigator.nvim",
-        keys = {
-            { "]h",        function() require("notebook-navigator").move_cell "d" end },
-            { "[h",        function() require("notebook-navigator").move_cell "u" end },
-            { "<leader>X", "<cmd>lua require('notebook-navigator').run_cell()<cr>" },
-            { "<leader>x", "<cmd>lua require('notebook-navigator').run_and_move()<cr>" },
-        },
-        dependencies = {
-            "echasnovski/mini.comment",
-            "Vigemus/iron.nvim", -- repl provider
-            -- "akinsho/toggleterm.nvim", -- alternative repl provider
-            -- "benlubas/molten-nvim", -- alternative repl provider
-            "anuvyklack/hydra.nvim",
-        },
-        event = "VeryLazy",
-        config = function()
-            local nn = require "notebook-navigator"
-            nn.setup({ activate_hydra_keys = "<leader>h" })
-        end,
-    },
-    {
-        "echasnovski/mini.hipatterns",
-        event = "VeryLazy",
-        dependencies = { "GCBallesteros/NotebookNavigator.nvim" },
-        opts = function()
-            local nn = require "notebook-navigator"
-
-            local opts = { highlighters = { cells = nn.minihipatterns_spec } }
-            return opts
-        end,
-    },
-    {
-        "olimorris/codecompanion.nvim",
-        config = function()
-            require("codecompanion").setup()
-        end,
-        requires = {
-            "nvim-lua/plenary.nvim",
-            "nvim-treesitter/nvim-treesitter",
-        }
     },
 }
 
