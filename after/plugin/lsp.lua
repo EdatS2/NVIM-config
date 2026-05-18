@@ -1,29 +1,39 @@
 local lsp = require('lsp-zero')
-local lspconfig = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 lsp.preset('recommended')
 
-lsp.setup_servers({'dartls', force = true})
 
 -- Settings for LSPs
-lspconfig.ltex.setup({
+vim.lsp.config("ltex", {
     settings = {
         additionalRules = {
             enablePickyRules = true,
         },
     },
 })
-lspconfig.clangd.setup{capabilties=capabilities, cmd={ "clangd", "-header-insertion=never"}}
-lspconfig.nixd.setup{capabilties=capabilities}
-lspconfig.bashls.setup{capabilties=capabilities}
-lspconfig.jedi_language_server.setup{capabilties=capabilities}
-lspconfig.ansiblels.setup{capabilties=capabilities}
-lspconfig.docker_compose_language_service.setup{capabilties=capabilities}
-lspconfig.lua_ls.setup{capabilties=capabilities}
-lspconfig.texlab.setup{capabilties=capabilities}
-lspconfig.zls.setup{capabilities=capabilities}
-lspconfig.marksman.setup{capabilities=capabilities}
+vim.lsp.enable("ltex")
+vim.lsp.config("clangd",{capabilties=capabilities, cmd={ "clangd", "-header-insertion=never"}})
+vim.lsp.enable("clangd")
+vim.lsp.config("nixd",{capabilties=capabilities})
+vim.lsp.enable("nixd")
+vim.lsp.config("bashls",{capabilties=capabilities})
+vim.lsp.enable("bashls")
+-- lspconfig.jedi_language_server.setup{capabilties=capabilities}
+vim.lsp.config("pyright",{capabilties=capabilities})
+vim.lsp.enable("pyright")
+vim.lsp.config("ansiblels",{capabilties=capabilities})
+vim.lsp.enable("ansiblels")
+vim.lsp.config("docker_compose_language_service",{capabilties=capabilities})
+vim.lsp.enable("docker_compose_language_service")
+vim.lsp.config("lua_ls",{capabilties=capabilities})
+vim.lsp.enable("lua_ls")
+vim.lsp.config("texlab",{capabilties=capabilities})
+vim.lsp.enable("texlab")
+vim.lsp.config("zls",{capabilities=capabilities})
+vim.lsp.enable("zls")
+vim.lsp.config("marksman",{capabilities=capabilities})
+vim.lsp.enable("marksman")
 
 -- cmp setup
 local cmp = require('cmp')
