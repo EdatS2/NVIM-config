@@ -15,7 +15,7 @@ vim.opt.rtp:prepend(lazypath)
 local plugins = {
     {
         'nvim-telescope/telescope.nvim',
-        tag = '0.1.3',
+        tag = '0.2.1',
         dependencies = {
             'nvim-lua/plenary.nvim'
         },
@@ -68,8 +68,6 @@ local plugins = {
         'tpope/vim-fugitive',
     },
     {
-        { 'williamboman/mason.nvim' },
-        { 'williamboman/mason-lspconfig.nvim' },
         { 'VonHeikemen/lsp-zero.nvim',        branch = 'v3.x' },
         { 'neovim/nvim-lspconfig' },
         { 'L3MON4D3/LuaSnip' },
