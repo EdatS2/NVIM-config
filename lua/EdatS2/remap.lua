@@ -41,3 +41,9 @@ vim.keymap.set("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, si
 
 -- Expand 'cc' into 'CodeCompanion' in the command line
 vim.cmd([[cab cc CodeCompanion]])
+
+-- diagnostics
+vim.keymap.set('n', '<leader>ln', vim.diagnostic.goto_next)
+vim.keymap.set('n', '<leader>lp', vim.diagnostic.goto_prev)
+vim.keymap.set('n', '<leader>lo', vim.diagnostic.setloclist)
+vim.keymap.set('n', '<leader>le', vim.diagnostic.open_float)
