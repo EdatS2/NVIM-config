@@ -10,8 +10,31 @@ vim.lsp.config("ltex", {
 })
 vim.lsp.enable("ltex")
 vim.lsp.config("clangd",
-    { capabilities = capabilities, cmd = require('devcontainers').lsp_cmd({ "clangd", "-header-insertion=never" }), filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda' } })
--- vim.lsp.config("nixd", { capabilities = capabilities, filetypes = { 'nix' } })
+    { capabilities = capabilities, 
+    cmd = require('devcontainers').lsp_cmd({ "clangd", "-header-insertion=never" }), 
+    filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda' },
+    -- Use the OUTERMOST .git (the git superproject) so files inside git
+    -- submodules root at the top-level repo and reuse its single devcontainer,
+    -- instead of trying to boot a second container per submodule.
+    root_dir = function(bufnr, on_dir)
+        local fname = vim.api.nvim_buf_get_name(bufnr)
+        local root
+        for dir in vim.fs.parents(fname) do
+            if vim.uv.fs_stat(dir .. '/.git') then
+                root = dir -- keep going; last match = outermost .git
+            end
+        end
+        on_dir(root)
+    end})
+vim.lsp.config("nixd", {
+    capabilities = capabilities,
+    filetypes = { 'nix' },
+    settings = {
+        nixd = {
+            nixpkgs = { expr = "import <nixpkgs> {}" },
+        },
+    },
+})
 -- vim.lsp.config("bashls", { capabilities = capabilities, filetypes = { 'bash', 'sh' } })
 -- -- lspconfig.jedi_language_server.setup{capabilities=capabilities}
 vim.lsp.config("pyright", { capabilities = capabilities })
@@ -21,8 +44,7 @@ vim.lsp.config("pyright", { capabilities = capabilities })
 -- vim.lsp.config("marksman", { capabilities = capabilities, filetypes = { 'markdown', 'markdown.mdx' } })
 vim.lsp.config("typescript-language-server",
     { capabilities = capabilities, cmd = { "typescript-language-server", "--stdio" }, filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' } })
-vim.lsp.enable({ 'clangd', 'nixd', 'bashls', 'pyright', 'lua_ls', 'zls', 'texlab', 'marksman',
-    'typescript-language-server' })
+vim.lsp.enable({ 'clangd', 'nixd', 'pyright', 'typescript-language-server' })
 
 vim.cmd [[set completeopt+=menuone,noselect,popup]]
 vim.api.nvim_create_autocmd('LspAttach', {
