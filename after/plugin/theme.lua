@@ -14,3 +14,14 @@ vim.g.gruvbox_baby_keyword_style = "italic"
 vim.g.gruvbox_baby_telescope_theme = 1
 
 vim.cmd("colorscheme gruvbox-baby")
+
+require('lualine').setup {
+  options = {
+    theme = 'gruvbox-baby'
+  },
+  sections = {
+      lualine_c = {
+          'lsp_progress'
+      }
+  }
+}

@@ -1,0 +1,2 @@
+-- github/copilot.vim - defaults are fine, just press Tab for suggestions
+-- Run `:Copilot setup` once to authenticate with GitHub

@@ -11,7 +11,7 @@ vim.lsp.config("ltex", {
 vim.lsp.enable("ltex")
 vim.lsp.config("clangd",
     { capabilities = capabilities, 
-    cmd = require('devcontainers').lsp_cmd({ "clangd", "-header-insertion=never" }), 
+    cmd = require('devcontainers').lsp_cmd({ "clangd", "-header-insertion=never", "--query-driver=/opt/sdk-jetson-*/*/*/usr/bin/*/*-g++"}), 
     filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda' },
     -- Use the OUTERMOST .git (the git superproject) so files inside git
     -- submodules root at the top-level repo and reuse its single devcontainer,
