@@ -47,3 +47,6 @@ vim.keymap.set('n', '<leader>ln', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<leader>lp', vim.diagnostic.goto_prev)
 vim.keymap.set('n', '<leader>lo', vim.diagnostic.setloclist)
 vim.keymap.set('n', '<leader>le', vim.diagnostic.open_float)
+
+-- lsp
+vim.keymap.set('n', 'grd', vim.lsp.buf.definition)

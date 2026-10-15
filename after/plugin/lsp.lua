@@ -11,7 +11,7 @@ vim.lsp.config("ltex", {
 vim.lsp.enable("ltex")
 vim.lsp.config("clangd",
     { capabilities = capabilities, 
-    cmd = require('devcontainers').lsp_cmd({ "clangd", "-header-insertion=never", "--query-driver=/opt/sdk-jetson-*/*/*/usr/bin/*/*-g++"}), 
+    cmd = {"clangd", "-header-insertion=never", "--query-driver=/opt/sdk-*/*/*/usr/bin/*/*-g++,/nix/store/*/sysroots/*/usr/bin/*/*-gcc,/nix/store/*/sysroots/*/usr/bin/*/*-g++" },
     filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda' },
     -- Use the OUTERMOST .git (the git superproject) so files inside git
     -- submodules root at the top-level repo and reuse its single devcontainer,
@@ -113,15 +113,19 @@ cmp.setup({
         { name = 'codecompanion', priority = 950 },
     }),
     mapping = cmp.mapping.preset.insert({
-        -- Confirm completion
-        --        ['<Tab>'] = cmp.mapping.confirm({select = true}),
+        -- Tab: jump snippet placeholders, otherwise confirm completion
+        ['<Tab>'] = cmp.mapping(function(fallback)
+            if vim.snippet.active({ direction = 1 }) then
+                vim.snippet.jump(1)
+            elseif cmp.visible() then
+                cmp.confirm({ select = true })
+            else
+                fallback()
+            end
+        end, { "i", "s" }),
 
         -- Trigger completion menu
         ['<A-Enter>'] = cmp.mapping.complete(),
-
-        -- -- Navigate between snippet placeholders
-        -- ['<C-f>'] = cmp.mapping(cmp_action.luasnip_jump_forward(), {"i","s"}),
-        -- ['<C-b>'] = cmp.mapping(cmp_action.luasnip_jump_backward(), {"i","s"}),
 
         -- Scroll through completions
         ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
